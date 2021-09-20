@@ -1,0 +1,17 @@
+@import '../../../Sass/App.scss';
+
+.ui.blue.basic.button{
+    color: #2F80ED !important;
+    background: #E0ECFD !important;
+    border-radius: 4px;
+    box-shadow: none !important;
+}
+
+.ui.button{
+    font-family: 'Roboto', 'Verdana', sans-serif !important;
+}
+
+.ui.blue.basic.button.disabled{
+    cursor: not-allowed;
+    pointer-events: unset !important;
+}
