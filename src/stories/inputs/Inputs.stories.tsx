@@ -1,34 +1,25 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import InputText, {textInput} from '../../components/inputs/';
+import InputText, {textInput} from '../../components/atoms/inputs';
 import 'semantic-ui-css/semantic.min.css';
 
 export default {
-    title: 'Components/Input',
+    title: 'Components/Atoms/Input',
     component: InputText,
-    argTypes: {
-        isDisabled: {
-          options: ['True', 'False'],
-          control: { type: 'boolean' }
-        },
-        isError: {
-            options: ['True', 'False'],
-            control: { type: 'boolean' }
-          }
-      }
 
   } as Meta;
 
   const Template: Story<textInput> = (args:textInput) => <InputText {...args} />;
 
 
-export const Text = Template.bind({});
-Text.args = {
+export const SearchText = Template.bind({});
+SearchText.args = {
     type:'text',
-    placeholder:'Username',
+    placeholder:'Search',
     isDisabled:false,
     isError:false,
-    label:"Username",
+    icon:'search',
+    iconPosition:'left',
 };
 
 export const Password = Template.bind({});

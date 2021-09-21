@@ -67,13 +67,18 @@ Array [
     Username
   </label>,
   <div
-    className="ui fluid input inputText"
+    className="ui fluid left icon input inputText"
   >
     <input
       disabled={false}
       onChange={[Function]}
       placeholder="Username"
       type="text"
+    />
+    <i
+      aria-hidden="true"
+      className="search icon"
+      onClick={[Function]}
     />
   </div>,
 ]

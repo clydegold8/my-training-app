@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, SemanticCOLORS } from 'semantic-ui-react';
-import './style/button.scss';
+import { SemanticCOLORS } from 'semantic-ui-react';
+import { Styledbutton } from './style/button.styled.component';
 
 
-export interface buttonProps  {
+type buttonProps = {
   label?:string,
   color?:SemanticCOLORS,
   isLoading:boolean,
@@ -13,23 +13,25 @@ export interface buttonProps  {
 
 const ButtonComponent = ({ 
 label,
-isLoading,
-isDisabled,
-isPrimary,
+isLoading = false,
+isDisabled = false,
+isPrimary = true,
 color,
-...props }:buttonProps,ClickHandler: (arg0: any) => void) => {
+...props }:buttonProps,ClickHandler:any) => {
   return (
-    <Button
+    <Styledbutton
       onClick={(event:any) => ClickHandler(event)}
       color= {color}
       primary={isPrimary}
       basic={!isPrimary}
       loading={isLoading}
       disabled={isDisabled}
+      isPrimaryProp={isPrimary}
+      isDisabledProp={isDisabled}
       {...props}
     >
       {label}
-    </Button>
+    </Styledbutton>
   )
 }
 
