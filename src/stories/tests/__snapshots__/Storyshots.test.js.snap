@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Button Login 1`] = `
+<button
+  className="ui blue primary button"
+  onClick={[Function]}
+>
+  Login
+</button>
+`;
+
+exports[`Storyshots Components/Button Select 1`] = `
+<button
+  className="ui blue basic button"
+  onClick={[Function]}
+>
+  Select
+</button>
+`;
+
+exports[`Storyshots Components/Input Email 1`] = `
+Array [
+  <label
+    className=""
+  >
+    Email
+  </label>,
+  <div
+    className="ui fluid input inputText"
+  >
+    <input
+      disabled={false}
+      onChange={[Function]}
+      pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+      placeholder="Email"
+      type="email"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots Components/Input Password 1`] = `
+Array [
+  <label
+    className=""
+  >
+    Password
+  </label>,
+  <div
+    className="ui fluid input inputText"
+  >
+    <input
+      disabled={false}
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots Components/Input Text 1`] = `
+Array [
+  <label
+    className=""
+  >
+    Username
+  </label>,
+  <div
+    className="ui fluid left icon input inputText"
+  >
+    <input
+      disabled={false}
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+    />
+    <i
+      aria-hidden="true"
+      className="search icon"
+      onClick={[Function]}
+    />
+  </div>,
+]
+`;
