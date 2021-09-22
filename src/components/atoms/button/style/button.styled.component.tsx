@@ -8,16 +8,17 @@ export const Styledbutton = styled(Button)<buttonInterface>`
   ${fontLink.fontFamily};
   border-radius: 4px;
   ${props => props.isPrimaryProp? '' : `
-    color: #2F80ED !important;
-    background: #E0ECFD !important;
+    color: #2F80ED;
+    background: #E0ECFD;
     border-radius: 4px;
-    box-shadow: none !important;
+    box-shadow: none;
   `}
   ${props => props.isDisabledProp? `
-    cursor: not-allowed !important;
+    cursor: not-allowed;
     pointer-events: unset !important;
   ` : ''}
 }
+
 `;
 
 export type buttonInterface = {

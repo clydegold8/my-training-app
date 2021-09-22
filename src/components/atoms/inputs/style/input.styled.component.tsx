@@ -19,7 +19,7 @@ export const StyledInput = styled(Input)<inputInterface>`
     ${fontLink.fontFamily};
     margin-top: 11px;
     ${props => props.isDisabledProp? 'cursor: not-allowed;' : ''}
-    color: ${props => props.isErrorProp ? fontColor.error : fontColor.default} !important;
+    color: ${props => props.isErrorProp ? fontColor.error : fontColor.default};
 
     ${props => props.isErrorProp ? `
       input{
