@@ -58,7 +58,7 @@ const LogInForm = (
                 <ButtonComponent
                 color="blue"
                 isPrimary={isPrimary}
-                label="Login"
+                btnlabel="Login"
                 isDisabled={isDisabled}
                 isLoading={isLoading}
                 onClickHandler={() => {}}

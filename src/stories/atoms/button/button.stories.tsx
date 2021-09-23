@@ -16,7 +16,7 @@ export default {
 
 export const Login = Template.bind({});
 Login.args = {
-  label:'Login',
+  btnlabel:'Login',
   color:'blue',
   isPrimary:true,
   isLoading: false,
@@ -25,7 +25,7 @@ Login.args = {
 
 export const Select = Template.bind({});
 Select.args = {
-  label:'Select',
+  btnlabel:'Select',
   color:'blue',
   isPrimary:false,
   isLoading: false,

@@ -3,16 +3,16 @@ import { Styledbutton } from './style/button.styled.component';
 
 
 type buttonProps = {
-  label?:string,
+  btnlabel?:string,
   color?:SemanticCOLORS,
   isLoading:boolean,
   isDisabled:boolean,
   isPrimary:boolean,
-  onClickHandler(): void;
+  onClickHandler?(): void;
 }
 
 const ButtonComponent = ({ 
-label,
+btnlabel,
 isLoading = false,
 isDisabled = false,
 isPrimary = true,
@@ -21,7 +21,6 @@ color,
 ...props }:buttonProps) => {
   return (
     <Styledbutton
-      onClick={() => onClickHandler()}
       color= {color}
       primary={isPrimary}
       basic={!isPrimary}
@@ -31,7 +30,7 @@ color,
       isDisabledProp={isDisabled}
       {...props}
     >
-      {label}
+      {btnlabel}
     </Styledbutton>
   )
 }
