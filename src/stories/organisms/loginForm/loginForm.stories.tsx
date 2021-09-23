@@ -5,7 +5,6 @@ import LogInForm, {loginFormInterface} from '../../../components/organisms/login
 export default {
     title: 'Components/Organisms/LoginForm',
     component: LogInForm,
-    argTypes: { onSubmit: { action: 'clicked' } },
 
   } as Meta;
 

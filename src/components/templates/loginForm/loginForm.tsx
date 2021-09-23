@@ -13,11 +13,6 @@ export type loginFormInterface = {
     isError?:boolean,
 }
 
-const onHandleSubmit = (event:any) => {
-    console.log(event,event.target.elements.email.value);
-    action('onSubmit')
-}
-
 const LogInForm = (
     {
         isDisabled = false,
@@ -27,7 +22,7 @@ const LogInForm = (
     }:loginFormInterface) => {
     return(
         <>
-         <Form onSubmit={onHandleSubmit}>
+         <Form onSubmit={action('onSubmit')}>
             <Form.Group widths="equal">
                 <StyledFormField
                 control={InputText}

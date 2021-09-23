@@ -11,31 +11,26 @@ export type loginFormInterface = {
     isPrimary:boolean,
     isLoading:boolean,
     isError?:boolean,
+    onHandleSubmit(e:any):any,
 }
 
-const onHandleSubmit = (event:any) => {
-    console.log(event,event.target.elements.email.value);
-    action('onSubmit')
-}
 
 const LogInForm = (
     {
         isDisabled = false,
         isPrimary = true,
         isLoading = false,
-        isError = false,
+        isError = false
     }:loginFormInterface) => {
     return(
         <>
-         <Form onSubmit={onHandleSubmit}>
+         <Form onSubmit={action('onSubmit')}>
             <Form.Group widths="equal">
                 <StyledFormField
                 control={InputText}
                 fluid
                 label="Email"
-                pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
                 placeholder="Email"
-                type="email"
                 isDisabled={isDisabled}
                 disabled={isDisabled}
                 isError={isError}
@@ -66,7 +61,7 @@ const LogInForm = (
                 label="Login"
                 isDisabled={isDisabled}
                 isLoading={isLoading}
-                onClickHandler={(e:any) => {}}
+                onClickHandler={() => {}}
                 />
             </Form.Field>
          </Form>

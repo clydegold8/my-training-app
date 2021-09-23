@@ -8,7 +8,7 @@ type buttonProps = {
   isLoading:boolean,
   isDisabled:boolean,
   isPrimary:boolean,
-  onClickHandler(event:any): any;
+  onClickHandler(): void;
 }
 
 const ButtonComponent = ({ 
@@ -21,7 +21,7 @@ color,
 ...props }:buttonProps) => {
   return (
     <Styledbutton
-      onClick={(event:any) => onClickHandler(event)}
+      onClick={() => onClickHandler()}
       color= {color}
       primary={isPrimary}
       basic={!isPrimary}
