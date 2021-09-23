@@ -10,6 +10,7 @@ export type textInput = {
     isError?:boolean,
     icon?:string,
     iconPosition?:any,
+    name?:string,
 }
 
 const InputText = ({
@@ -21,6 +22,7 @@ const InputText = ({
     label,
     icon,
     iconPosition,
+    name,
     ...props
 }:textInput) => {
   return (
@@ -30,11 +32,13 @@ const InputText = ({
         isDisabledProp={isDisabled}
         disabled={isDisabled}
         error={isError}
+        isErrorProp={isError}
         type={type}
         pattern={pattern}
         placeholder={placeholder}
         icon={icon}
         iconPosition={iconPosition}
+        name={name}
         {...props} />
     </>
   )

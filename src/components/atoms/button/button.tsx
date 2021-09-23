@@ -1,4 +1,3 @@
-import React from 'react';
 import { SemanticCOLORS } from 'semantic-ui-react';
 import { Styledbutton } from './style/button.styled.component';
 
@@ -9,6 +8,7 @@ type buttonProps = {
   isLoading:boolean,
   isDisabled:boolean,
   isPrimary:boolean,
+  onClickHandler(): void;
 }
 
 const ButtonComponent = ({ 
@@ -16,11 +16,12 @@ label,
 isLoading = false,
 isDisabled = false,
 isPrimary = true,
+onClickHandler,
 color,
-...props }:buttonProps,ClickHandler:any) => {
+...props }:buttonProps) => {
   return (
     <Styledbutton
-      onClick={(event:any) => ClickHandler(event)}
+      onClick={() => onClickHandler()}
       color= {color}
       primary={isPrimary}
       basic={!isPrimary}

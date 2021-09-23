@@ -11,16 +11,14 @@ export type loginFormInterface = {
     isPrimary:boolean,
     isLoading:boolean,
     isError?:boolean,
-    onHandleSubmit(e:any):any,
 }
-
 
 const LogInForm = (
     {
         isDisabled = false,
         isPrimary = true,
         isLoading = false,
-        isError = false
+        isError = false,
     }:loginFormInterface) => {
     return(
         <>
@@ -30,7 +28,9 @@ const LogInForm = (
                 control={InputText}
                 fluid
                 label="Email"
+                pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
                 placeholder="Email"
+                type="email"
                 isDisabled={isDisabled}
                 disabled={isDisabled}
                 isError={isError}
@@ -61,7 +61,7 @@ const LogInForm = (
                 label="Login"
                 isDisabled={isDisabled}
                 isLoading={isLoading}
-                onClickHandler={() => {}}
+                onClickHandler={(e:any) => {}}
                 />
             </Form.Field>
          </Form>
