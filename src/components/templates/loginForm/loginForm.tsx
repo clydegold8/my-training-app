@@ -1,70 +1,94 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import InputText from '../../atoms/inputs'
 import ButtonComponent from '../../atoms/button'
-import {Form} from 'semantic-ui-react'
-import { action } from '@storybook/addon-actions';
-import { StyledFormField } from './style/loginForm.styled.component';
+// import {Form} from 'semantic-ui-react'
+import {
+    Form,
+    SubmitButton,
+    Input
+  } from "formik-semantic-ui-react";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 
-export type loginFormInterface = {
+export type IloginForm = {
     isDisabled:boolean,
     isPrimary:boolean,
-    isLoading:boolean,
-    isError?:boolean,
+    isDisabledLogBtn?:boolean
 }
 
 const LogInForm = (
     {
         isDisabled = false,
         isPrimary = true,
-        isLoading = false,
-        isError = false,
-    }:loginFormInterface) => {
+    }) => {
+    
+    useEffect(() => {
+        setDisabledState(isDisabled);
+    }, [isDisabled]);
+
+    const [isDisabledState, setDisabledState] = useState(isDisabled);
+
+
+    const initialValues = {
+        email: "",
+        password: ""
+    };
+
+    const validationSchema = Yup.object({
+        email: Yup.string().email("Invalid email address").required("Email is required"),
+        password: Yup.string().min(8, "Must be at least 8 characters").required("Password is required")
+    });
+
+
     return(
         <>
-         <Form onSubmit={action('onSubmit')}>
-            <Form.Group widths="equal">
-                <StyledFormField
-                control={InputText}
-                fluid
-                label="Email"
-                pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
-                placeholder="Email"
-                type="email"
-                isDisabled={isDisabled}
-                disabled={isDisabled}
-                isError={isError}
-                error ={isError}
-                isErrorProp={isError}
-                name="email"
+        <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(_, { setSubmitting, resetForm }) => {
+            setDisabledState(true);
+          setTimeout(() => {
+            setSubmitting(false);
+            setDisabledState(false);
+            resetForm();
+          }, 1000);
+        }}
+        >
+        {({ isValid }) => (
+            <Form size="large">
+                <Input
+                    control={InputText}
+                    label="Email"
+                    placeholder="Email"
+                    isDisabled={isDisabledState}
+                    disabled={isDisabledState}
+                    name="email"
+                    fluid
+                    errorPrompt
                 />
-            </Form.Group>
-            <Form.Group widths="equal">
-              <StyledFormField
-                control={InputText}
-                fluid
-                label="Password"
-                placeholder="Password"
-                type="password"
-                isDisabled={isDisabled}
-                disabled={isDisabled}
-                isError={isError}
-                error ={isError}
-                isErrorProp={isError}
-                name="password"
-              />
-            </Form.Group>
-            <Form.Field>
-                <ButtonComponent
-                color="blue"
-                isPrimary={isPrimary}
-                label="Login"
-                isDisabled={isDisabled}
-                isLoading={isLoading}
-                onClickHandler={(e:any) => {}}
+                <Input
+                    control={InputText}
+                    label="Password"
+                    placeholder="Password"
+                    isDisabled={isDisabledState}
+                    disabled={isDisabledState}
+                    name="password"
+                    type="password"
+                    fluid
+                    errorPrompt
                 />
-            </Form.Field>
-         </Form>
+                <SubmitButton
+                control={ButtonComponent}
+                disabled={!isValid}
+                primary={isPrimary}
+                basic={!isPrimary}
+                btnlabel="Login"
+                fluid 
+                />
+            </Form>
+       )}
+        </Formik>
         </>
     )
 }
