@@ -25,11 +25,10 @@ const LogInForm = (
     
     useEffect(() => {
         setDisabledState(isDisabled);
-        setIsPrimaryState(isPrimary)
-    }, [isDisabled,isPrimary]);
+    }, [isDisabled]);
 
     const [isDisabledState, setDisabledState] = useState(isDisabled);
-    const [isPrimaryState, setIsPrimaryState] = useState(isPrimary);
+
 
     const initialValues = {
         email: "",
@@ -38,9 +37,7 @@ const LogInForm = (
 
     const validationSchema = Yup.object({
         email: Yup.string().email("Invalid email address").required("Email is required"),
-        password: Yup.string()
-            .min(8, "Must be at least 8 characters")
-            .required("Password is required")
+        password: Yup.string().min(8, "Must be at least 8 characters").required("Password is required")
     });
 
 
@@ -58,9 +55,8 @@ const LogInForm = (
           }, 1000);
         }}
         >
-        {props => (
+        {({ isValid }) => (
             <Form size="large">
-            {console.log(isDisabledState,props)}
                 <Input
                     control={InputText}
                     label="Email"
@@ -84,9 +80,9 @@ const LogInForm = (
                 />
                 <SubmitButton
                 control={ButtonComponent}
-                disabled={!props.isValid}
-                primary={isPrimaryState}
-                basic={!isPrimaryState}
+                disabled={!isValid}
+                primary={isPrimary}
+                basic={!isPrimary}
                 btnlabel="Login"
                 fluid 
                 />
