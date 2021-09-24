@@ -35,7 +35,7 @@ const LogInForm = (
                 disabled={isDisabled}
                 isError={isError}
                 error ={isError}
-                isErrorProp={isError}
+                iserrorprop={isError.toString()}
                 name="email"
                 />
             </Form.Group>
@@ -50,7 +50,7 @@ const LogInForm = (
                 disabled={isDisabled}
                 isError={isError}
                 error ={isError}
-                isErrorProp={isError}
+                iserrorprop={isError.toString()}
                 name="password"
               />
             </Form.Group>

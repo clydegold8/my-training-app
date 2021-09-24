@@ -27,12 +27,12 @@ const InputText = ({
 }:textInput) => {
   return (
     <>
-    <Styledlabel isErrorProp={isError}>{label}</Styledlabel>
+    <Styledlabel iserrorprop={isError?.toString()}>{label}</Styledlabel>
     <StyledInput fluid
-        isDisabledProp={isDisabled}
+        isdisabledprop={isDisabled.toString()}
         disabled={isDisabled}
         error={isError}
-        isErrorProp={isError}
+        iserrorprop={isError?.toString()}
         type={type}
         pattern={pattern}
         placeholder={placeholder}

@@ -7,13 +7,13 @@ export const Styledbutton = styled(Button)<buttonInterface>`
   ${fontLink.url};
   ${fontLink.fontFamily};
   border-radius: 4px;
-  ${props => props.isPrimaryProp? '' : `
+  ${props => props.isprimaryprop === 'true'? '' : `
     color: #2F80ED;
     background: #E0ECFD;
     border-radius: 4px;
     box-shadow: none;
   `}
-  ${props => props.isDisabledProp? `
+  ${props => props.isdisableddrop === 'true'? `
     cursor: not-allowed;
     pointer-events: unset !important;
   ` : ''}
@@ -22,6 +22,6 @@ export const Styledbutton = styled(Button)<buttonInterface>`
 `;
 
 export type buttonInterface = {
-  isPrimaryProp?:boolean,
-  isDisabledProp?:boolean
+  isprimaryprop?:string,
+  isdisableddrop?:string
 }

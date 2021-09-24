@@ -2,7 +2,7 @@ import { SemanticCOLORS } from 'semantic-ui-react';
 import { Styledbutton } from './style/button.styled.component';
 
 
-type buttonProps = {
+export type buttonProps = {
   btnlabel?:string,
   color?:SemanticCOLORS,
   isLoading:boolean,
@@ -26,8 +26,9 @@ color,
       basic={!isPrimary}
       loading={isLoading}
       disabled={isDisabled}
-      isPrimaryProp={isPrimary}
-      isDisabledProp={isDisabled}
+      isprimaryprop={isPrimary.toString()}
+      isdisableddrop={isDisabled.toString()}
+      fluid
       {...props}
     >
       {btnlabel}

@@ -9,11 +9,11 @@ export const StyledFormField = styled(Form.Field)<formfieldInterface>`
         label{
             font-weight: 400;
             font-size: 14px; 
-            ${props => props.isErrorProp ? ` color: ${fontColor.error};` : ` color: ${fontColor.default};`} 
+            ${props => props.iserrorprop === 'true' ? ` color: ${fontColor.error};` : ` color: ${fontColor.default};`} 
         }
     }
 `;
 
 type formfieldInterface = {
-    isErrorProp?:boolean,
+    iserrorprop?:string,
 }

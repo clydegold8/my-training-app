@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import InputText from '../../atoms/inputs'
 import ButtonComponent from '../../atoms/button'
-// import {Form} from 'semantic-ui-react'
-import {
-    Form,
-    SubmitButton,
-    Input
-  } from "formik-semantic-ui-react";
+import {Form,SubmitButton,Input} from "formik-semantic-ui-react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect, useHistory  } from "react-router-dom";
 
 
 export type IloginForm = {
@@ -40,6 +35,7 @@ const LogInForm = (
         password: Yup.string().min(8, "Must be at least 8 characters").required("Password is required")
     });
 
+    const history = useHistory();
 
     return(
         <>
@@ -52,26 +48,25 @@ const LogInForm = (
             setSubmitting(false);
             setDisabledState(false);
             resetForm();
+            history.push('/tasks')
           }, 1000);
         }}
         >
         {({ isValid }) => (
             <Form size="large">
                 <Input
-                    control={InputText}
+                    className="inputEmail"
                     label="Email"
                     placeholder="Email"
-                    isDisabled={isDisabledState}
                     disabled={isDisabledState}
                     name="email"
                     fluid
                     errorPrompt
                 />
                 <Input
-                    control={InputText}
+                    className="inputPassword"
                     label="Password"
                     placeholder="Password"
-                    isDisabled={isDisabledState}
                     disabled={isDisabledState}
                     name="password"
                     type="password"
@@ -79,12 +74,12 @@ const LogInForm = (
                     errorPrompt
                 />
                 <SubmitButton
-                control={ButtonComponent}
-                disabled={!isValid}
-                primary={isPrimary}
-                basic={!isPrimary}
-                btnlabel="Login"
-                fluid 
+                    control={ButtonComponent}
+                    disabled={!isValid}
+                    primary={isPrimary}
+                    basic={!isPrimary}
+                    btnlabel="Login"
+                    fluid 
                 />
             </Form>
        )}
