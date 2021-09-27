@@ -1,5 +1,5 @@
-import React from 'react';
-import LogInPage from './components/pages/logInPage/'
+import React from "react";
+import LogInPage from "./components/pages/logInPage/";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function App() {
@@ -8,17 +8,16 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={LoginPage} />
-          <Route path="/tasks"  component={SeconPage} />
+          <Route path="/tasks" component={SeconPage} />
         </Switch>
       </Router>
-      
     </div>
   );
 }
 
 const LoginPage = () => (
   <>
-  <LogInPage/>
+    <LogInPage />
   </>
 );
 

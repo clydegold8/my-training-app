@@ -1,15 +1,12 @@
-import { Story, Meta } from '@storybook/react/types-6-0';
-import LogInPage from '../../../components/pages/logInPage';
+import { Story, Meta } from "@storybook/react/types-6-0";
+import LogInPage from "../../../components/pages/logInPage";
 
 export default {
-    title: 'Components/Page/LogInPage',
-    component: LogInPage,
+  title: "Components/Page/LogInPage",
+  component: LogInPage,
+} as Meta;
 
-  } as Meta;
-
-  const Template: Story<typeof LogInPage> = (args) => <LogInPage {...args} />;
+const Template: Story<typeof LogInPage> = (args) => <LogInPage {...args} />;
 
 export const loginPage = Template.bind({});
-loginPage.args = {
-
-};
+loginPage.args = {};
