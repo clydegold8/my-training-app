@@ -7,7 +7,7 @@ export type buttonProps = {
   isLoading: boolean;
   isDisabled: boolean;
   isPrimary: boolean;
-  onClickHandler?(): void;
+  onClickHandler: () => void;
 };
 
 const ButtonComponent = ({
@@ -26,8 +26,9 @@ const ButtonComponent = ({
       basic={!isPrimary}
       loading={isLoading}
       disabled={isDisabled}
-      isprimaryprop={isPrimary.toString()}
-      isdisableddrop={isDisabled.toString()}
+      isprimaryprop={isPrimary ? isPrimary : undefined}
+      isdisableddrop={isDisabled ? isDisabled : undefined}
+      onClick={() => (onClickHandler ? onClickHandler() : {})}
       fluid
       {...props}
     >

@@ -1,6 +1,8 @@
 import React from "react";
 import LogInPage from "./components/pages/logInPage/";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import TasksPage from "./components/pages/tasksPage";
+import SelectToDoComponent from "./components/pages/selectToDoPage"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -8,24 +10,16 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={LoginPage} />
-          <Route path="/tasks" component={SeconPage} />
+          <Route path="/tasks" component={TaskPage} />
+          <Route path="/selecttodo" component={SelecTodoPage} />
         </Switch>
       </Router>
     </div>
   );
 }
 
-const LoginPage = () => (
-  <>
-    <LogInPage />
-  </>
-);
-
-// this is a sample directed page for now
-const SeconPage = () => (
-  <>
-    <h1>Hello World!</h1>
-  </>
-);
+const LoginPage = () => <LogInPage />;
+const TaskPage = () => <TasksPage />;
+const SelecTodoPage = () => <SelectToDoComponent />;
 
 export default App;

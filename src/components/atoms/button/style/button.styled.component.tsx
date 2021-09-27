@@ -2,13 +2,13 @@ import { Button } from "semantic-ui-react";
 import styled from "styled-components";
 import { fontLink } from "../../../utils/fontColor.context";
 
-export const Styledbutton = styled(Button)<buttonInterface>`
+export const Styledbutton = styled(Button)`
   &&&&& {
     ${fontLink.url};
     ${fontLink.fontFamily};
     border-radius: 4px;
-    ${(props) =>
-      props.isprimaryprop === "true"
+    ${(props: buttonInterface) =>
+      props.isPrimaryProp
         ? ""
         : `
     color: #2F80ED;
@@ -16,8 +16,8 @@ export const Styledbutton = styled(Button)<buttonInterface>`
     border-radius: 4px;
     box-shadow: none;
   `}
-    ${(props) =>
-      props.isdisableddrop === "true"
+    ${(props: buttonInterface) =>
+      props.isdisableddrop
         ? `
     cursor: not-allowed;
     pointer-events: unset !important;
@@ -27,6 +27,6 @@ export const Styledbutton = styled(Button)<buttonInterface>`
 `;
 
 export type buttonInterface = {
-  isprimaryprop?: string;
-  isdisableddrop?: string;
+  isPrimaryProp?: boolean;
+  isdisableddrop?: boolean;
 };

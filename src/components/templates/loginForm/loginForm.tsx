@@ -3,14 +3,7 @@ import ButtonComponent from "../../atoms/button";
 import { Form, SubmitButton, Input } from "formik-semantic-ui-react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect,
-  useHistory,
-} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export type IloginForm = {
   isDisabled: boolean;
