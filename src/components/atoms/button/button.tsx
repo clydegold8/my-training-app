@@ -1,6 +1,5 @@
 import { SemanticCOLORS } from "semantic-ui-react";
 import { Styledbutton } from "./style/button.styled.component";
-import { ThemedStyledFunction } from "styled-components";
 
 export type buttonProps = {
   btnlabel?: string;
