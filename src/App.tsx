@@ -1,23 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import LogInPage from "./components/pages/logInPage/";
+import TasksPage from "./components/pages/tasksPage";
+import SelectToDoComponent from "./components/pages/selectToDoPage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const LoginPage = () => <LogInPage />;
+const TaskPage = () => <TasksPage />;
+const SelecTodoPage = () => <SelectToDoComponent />;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={LoginPage} />
+          <Route path="/tasks" component={TaskPage} />
+          <Route path="/selecttodo" component={SelecTodoPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
