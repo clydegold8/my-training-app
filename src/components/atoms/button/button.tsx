@@ -1,5 +1,6 @@
 import { SemanticCOLORS } from "semantic-ui-react";
 import { Styledbutton } from "./style/button.styled.component";
+import { ThemedStyledFunction } from "styled-components";
 
 export type buttonProps = {
   btnlabel?: string;
@@ -26,8 +27,6 @@ const ButtonComponent = ({
       basic={!isPrimary}
       loading={isLoading}
       disabled={isDisabled}
-      isprimaryprop={isPrimary ? isPrimary : undefined}
-      isdisableddrop={isDisabled ? isDisabled : undefined}
       onClick={() => (onClickHandler ? onClickHandler() : {})}
       fluid
       {...props}

@@ -1,8 +1,12 @@
 import React from "react";
 import LogInPage from "./components/pages/logInPage/";
 import TasksPage from "./components/pages/tasksPage";
-import SelectToDoComponent from "./components/pages/selectToDoPage"
+import SelectToDoComponent from "./components/pages/selectToDoPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const LoginPage = () => <LogInPage />;
+const TaskPage = () => <TasksPage />;
+const SelecTodoPage = () => <SelectToDoComponent />;
 
 function App() {
   return (
@@ -17,9 +21,5 @@ function App() {
     </div>
   );
 }
-
-const LoginPage = () => <LogInPage />;
-const TaskPage = () => <TasksPage />;
-const SelecTodoPage = () => <SelectToDoComponent />;
 
 export default App;
