@@ -6,7 +6,7 @@ import {
   StyledGridSearchColumn,
 } from "./styles/tasks.styled.component";
 import SearchHead from "../../templates/searchForm/";
-import NoItemsComponent from "../../molecules/noItems";
+import ToDoListComponent from "../../organisms/TodoList";
 
 const TasksPage = () => {
   return (
@@ -32,7 +32,7 @@ const TasksPage = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={16}>
-            <NoItemsComponent />
+            <ToDoListComponent />
           </Grid.Column>
         </Grid.Row>
       </Grid>
