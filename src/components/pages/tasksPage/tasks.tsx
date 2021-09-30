@@ -7,8 +7,14 @@ import {
 } from "./styles/tasks.styled.component";
 import SearchHead from "../../templates/searchForm/";
 import ToDoListComponent from "../../organisms/TodoList";
+import { useHistory } from "react-router-dom";
 
 const TasksPage = () => {
+  const history = useHistory();
+
+  const onHandleClick = () => {
+    history.push("/");
+  };
   return (
     <>
       <Grid>
@@ -17,7 +23,7 @@ const TasksPage = () => {
             <h1>ToDoish</h1>
           </StyledGridHeaderColumn>
           <StyledGridHeaderColumn width={3}>
-            <Image centered src={LogOut} />
+            <Image onClick={() => onHandleClick()} centered src={LogOut} />
           </StyledGridHeaderColumn>
         </Grid.Row>
         <Grid.Row>

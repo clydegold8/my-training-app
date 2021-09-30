@@ -8,13 +8,17 @@ import {
 } from "semantic-ui-react";
 
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { removeTask } from "../../../services/redux/store/actionCreators";
+import {
+  removeTask,
+  crashOutTask,
+} from "../../../services/redux/store/actionCreators";
 import { Dispatch } from "redux";
 import { ITask, TaskState } from "../../../services/redux/types/type.d";
 import TaskComponent from "../../molecules/task";
 import {
   StyledGridModal,
   StyledGridSegment,
+  StyledCircularBtn,
 } from "./style/todoList.style.component";
 import NoItemsComponent from "../../molecules/noItems";
 import { useHistory } from "react-router-dom";
@@ -44,6 +48,11 @@ const ToDoListComponent = () => {
     [dispatch]
   );
 
+  const crashOutSelectedTask = React.useCallback(
+    (task: ITask) => dispatch(crashOutTask(task)),
+    [dispatch]
+  );
+
   const onHandleDialog = (event: any) => {
     if (event) {
       deleteTask(isOpenState.tasks);
@@ -64,7 +73,7 @@ const ToDoListComponent = () => {
   };
 
   const onHandleDropdown = (data: DropdownItemProps, taskID: number) => {
-    const selectedTask: any = tasks.filter((task) => task.id === taskID);
+    const selectedTask: ITask[] = tasks.filter((task) => task.id === taskID);
     if (data.value === "delete") {
       setOpenState({
         openDialog: true,
@@ -73,6 +82,15 @@ const ToDoListComponent = () => {
     } else {
       history.push(`/updatetodo/${selectedTask[0].id}`);
     }
+  };
+
+  const onHandleColumnClick = (taskID: number) => {
+    const selectedTask: ITask[] = tasks.filter((task) => task.id === taskID);
+    crashOutSelectedTask(selectedTask[0]);
+  };
+
+  const handleAddBtn = () => {
+    history.push(`/addtodo`);
   };
 
   return (
@@ -84,8 +102,10 @@ const ToDoListComponent = () => {
               key={task.id}
               taskID={task.id}
               taskName={task.taskName}
+              isCrashout={task.isCrashOut}
               isTask={true}
               onHandleCheckboxChange={() => {}}
+              onHandleColumnClick={(taskID) => onHandleColumnClick(taskID)}
               onHandleDropDownChange={(data, taskID) =>
                 onHandleDropdown(data, taskID)
               }
@@ -121,6 +141,7 @@ const ToDoListComponent = () => {
           <p>To do Deleted</p>
         </StyledGridSegment>
       </TransitionablePortal>
+      <StyledCircularBtn onClick={() => handleAddBtn()} circular icon="add" />
     </>
   );
 };

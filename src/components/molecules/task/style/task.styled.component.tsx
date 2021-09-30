@@ -12,6 +12,8 @@ export const StyledGridElipsisColumn = styled(Grid.Column)`
 
 export const StyledGridCheckboxColumn = styled(Grid.Column)`
   &&&&& {
+    margin-left: 20px;
+
     .ui.checkbox label:before {
       border-radius: 50%;
       margin-top: 1px;
@@ -25,11 +27,18 @@ export const StyledGridCheckboxColumn = styled(Grid.Column)`
   }
 `;
 
-export const StyledGridTaskColumn = styled(Grid.Column)`
+export const StyledGridTaskColumn = styled(Grid.Column)<ITaskColumn>`
   &&&&& {
-    margin-left: 40px;
+    margin-left: 5px;
     ${fontLink.url};
     ${fontLink.fontFamily};
     color: ${fontColor.taskName};
+    cursor: pointer;
+    ${(props) =>
+      props.isCrashOut ? `color: #9EB7DA; text-decoration: line-through;` : ""}
   }
 `;
+
+export type ITaskColumn = {
+  isCrashOut?: boolean;
+};

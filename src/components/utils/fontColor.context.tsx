@@ -5,6 +5,7 @@ export const fontColor = {
   error: "#9f3a38",
   header: "#2F80ED",
   taskName: "#333333",
+  crashOuted: "#9EB7DA",
 };
 
 export const fontLink = {

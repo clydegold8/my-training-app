@@ -1,4 +1,4 @@
-import { Grid, Segment } from "semantic-ui-react";
+import { Button, Grid, Segment } from "semantic-ui-react";
 import styled from "styled-components";
 
 export const StyledGridFirstColumn = styled(Grid.Column)`
@@ -27,5 +27,17 @@ export const StyledGridSegment = styled(Segment)`
     width: fit-content;
     margin: 0 auto;
     background-color: #6fcf97;
+  }
+`;
+
+export const StyledCircularBtn = styled(Button)`
+  &&&&& {
+    position: relative;
+    float: right;
+    top: -32px;
+    background-color: #828282;
+    color: #ffffff;
+    font-size: 10px;
+    right: 5px;
   }
 `;

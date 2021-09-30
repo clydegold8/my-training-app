@@ -1,4 +1,4 @@
-import { Modal } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 import styled from "styled-components";
 import { fontLink } from "../../../utils/fontColor.context";
 import { Segment } from "semantic-ui-react";
@@ -33,5 +33,19 @@ export const StyledGridSegment = styled(Segment)`
     width: fit-content;
     margin: 0 auto;
     background-color: #6fcf97;
+  }
+`;
+
+export const StyledCircularBtn = styled(Button)`
+  &&&&& {
+    float: right;
+    position: fixed;
+    right: 35px;
+    background-color: #2f80ed;
+    bottom: 20px;
+
+    i {
+      color: #ffffff;
+    }
   }
 `;
