@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Grid, Modal, Button, TransitionablePortal } from "semantic-ui-react";
+import {
+  Grid,
+  Modal,
+  Button,
+  TransitionablePortal,
+  DropdownItemProps,
+} from "semantic-ui-react";
 
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { removeTask } from "../../pages/services/store/actionCreators";
+import { removeTask } from "../../../services/redux/store/actionCreators";
 import { Dispatch } from "redux";
-import { ITask, TaskState } from "../../pages/services/types/type.d";
+import { ITask, TaskState } from "../../../services/redux/types/type.d";
 import TaskComponent from "../../molecules/task";
 import {
   StyledGridModal,
@@ -57,7 +63,7 @@ const ToDoListComponent = () => {
     }
   };
 
-  const onHandleDropdown = (_e: any, data: any, taskID: number) => {
+  const onHandleDropdown = (data: DropdownItemProps, taskID: number) => {
     const selectedTask: any = tasks.filter((task) => task.id === taskID);
     if (data.value === "delete") {
       setOpenState({
@@ -80,8 +86,8 @@ const ToDoListComponent = () => {
               taskName={task.taskName}
               isTask={true}
               onHandleCheckboxChange={() => {}}
-              onHandleDropDownChange={(e, data, taskID) =>
-                onHandleDropdown(e, data, taskID)
+              onHandleDropDownChange={(data, taskID) =>
+                onHandleDropdown(data, taskID)
               }
             />
           ))

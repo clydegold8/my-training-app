@@ -1,5 +1,11 @@
 import React from "react";
-import { Grid, Dropdown, Checkbox } from "semantic-ui-react";
+import {
+  Grid,
+  Dropdown,
+  Checkbox,
+  CheckboxProps,
+  DropdownItemProps,
+} from "semantic-ui-react";
 import {
   StyledGridElipsisColumn,
   StyledGridCheckboxColumn,
@@ -10,16 +16,16 @@ export type ITask = {
   taskName: String;
   isTask?: boolean;
   taskID: number;
-  onHandleDropDownChange: (e: any, data: any, taskID: number) => any;
-  onHandleCheckboxChange: (e: any, data: any) => any;
+  onHandleDropDownChange: (data: DropdownItemProps, taskID: number) => any;
+  onHandleCheckboxChange: (data: CheckboxProps) => any;
 };
 
 const TaskComponent = ({
   taskName = "My Task",
   isTask = false,
   taskID = 0,
-  onHandleDropDownChange,
-  onHandleCheckboxChange,
+  onHandleDropDownChange = () => {},
+  onHandleCheckboxChange = () => {},
 }: ITask) => {
   return (
     <>
@@ -29,9 +35,7 @@ const TaskComponent = ({
             <Checkbox
               value={taskID}
               name="idTask"
-              onChange={(e, data) =>
-                onHandleCheckboxChange ? onHandleCheckboxChange(e, data) : {}
-              }
+              onChange={(e, data) => onHandleCheckboxChange(data)}
             />
           </StyledGridCheckboxColumn>
         ) : (
@@ -49,20 +53,12 @@ const TaskComponent = ({
               <Dropdown.Menu>
                 <Dropdown.Menu scrolling>
                   <Dropdown.Item
-                    onClick={(e, data) =>
-                      onHandleDropDownChange
-                        ? onHandleDropDownChange(e, data, taskID)
-                        : {}
-                    }
+                    onClick={(e, data) => onHandleDropDownChange(data, taskID)}
                     value="update"
                     text="Update"
                   />
                   <Dropdown.Item
-                    onClick={(e, data) =>
-                      onHandleDropDownChange
-                        ? onHandleDropDownChange(e, data, taskID)
-                        : {}
-                    }
+                    onClick={(e, data) => onHandleDropDownChange(data, taskID)}
                     value="delete"
                     text="Delete"
                   />

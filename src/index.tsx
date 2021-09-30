@@ -8,12 +8,12 @@ import "semantic-ui-css/semantic.min.css";
 import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import reducer from "../src/components/pages/services/store/reducer";
+import reducer from "./services/redux/store/reducer";
 import {
   DispatchType,
   TaskAction,
   TaskState,
-} from "./components/pages/services/types/type.d";
+} from "./services/redux/types/type.d";
 
 const store: Store<TaskState, TaskAction> & {
   dispatch: DispatchType;

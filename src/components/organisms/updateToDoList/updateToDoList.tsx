@@ -6,9 +6,9 @@ import {
 } from "./style/updateToDoList.styled.component";
 import { useHistory } from "react-router-dom";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { ITask, TaskState } from "../../pages/services/types/type.d";
+import { ITask, TaskState } from "../../../services/redux/types/type.d";
 import { Dispatch } from "redux";
-import { updateTask } from "../../pages/services/store/actionCreators";
+import { updateTask } from "../../../services/redux/store/actionCreators";
 
 type ItaskIDParams = {
   id: number;

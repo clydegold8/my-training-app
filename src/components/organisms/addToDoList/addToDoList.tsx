@@ -6,9 +6,9 @@ import {
 } from "./style/addToDoList.styled.component";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { ITask } from "../../pages/services/types/type.d";
+import { ITask } from "../../../services/redux/types/type.d";
 import { Dispatch } from "redux";
-import { addTask } from "../../pages/services/store/actionCreators";
+import { addTask } from "../../../services/redux/store/actionCreators";
 
 const AddToDoListComponent = () => {
   const [showToast, setShowToast] = useState(false);

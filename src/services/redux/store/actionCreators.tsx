@@ -1,6 +1,14 @@
 import { ITask, TaskAction, DispatchType } from "../types/type.d";
 import * as actionTypes from "./actionTypes";
 
+export function simulateHttpRequest(action: TaskAction) {
+  return (dispatch: DispatchType) => {
+    setTimeout(() => {
+      dispatch(action);
+    }, 500);
+  };
+}
+
 export function addTask(task: ITask) {
   const action: TaskAction = {
     type: actionTypes.ADD_TASK,
@@ -24,12 +32,4 @@ export function removeTask(task: ITask) {
     task,
   };
   return simulateHttpRequest(action);
-}
-
-export function simulateHttpRequest(action: TaskAction) {
-  return (dispatch: DispatchType) => {
-    setTimeout(() => {
-      dispatch(action);
-    }, 500);
-  };
 }
