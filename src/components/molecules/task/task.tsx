@@ -18,9 +18,9 @@ export type ITask = {
   taskID: number;
   isCrashout?: boolean;
   isAllchecked?: boolean;
-  onHandleDropDownChange: (data: DropdownItemProps, taskID: number) => any;
-  onHandleCheckboxChange: (data: CheckboxProps) => any;
-  onHandleColumnClick: (taskID: number) => any;
+  onHandleDropDownChange: (data: DropdownItemProps, taskID: number) => void;
+  onHandleCheckboxChange: (data: CheckboxProps) => void;
+  onHandleColumnClick: (taskID: number) => void;
 };
 
 const TaskComponent = ({
@@ -33,14 +33,14 @@ const TaskComponent = ({
   onHandleCheckboxChange = () => {},
   onHandleColumnClick = () => {},
 }: ITask) => {
-  const [ischecked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(false);
 
   useEffect(() => {
     setChecked(isAllchecked);
   }, [isAllchecked]);
 
   const toggle = () => {
-    setChecked(!ischecked);
+    setChecked(!isChecked);
   };
 
   return (
@@ -49,7 +49,7 @@ const TaskComponent = ({
         <StyledGridCheckboxColumn width={1}>
           {!isTask ? (
             <Checkbox
-              checked={ischecked}
+              checked={isChecked}
               value={taskID}
               name="idTask"
               onClick={(e, data) => onHandleCheckboxChange(data)}

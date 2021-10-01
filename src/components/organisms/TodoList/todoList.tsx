@@ -105,7 +105,7 @@ const ToDoListComponent = () => {
               isCrashout={task.isCrashOut}
               isTask={true}
               onHandleCheckboxChange={() => {}}
-              onHandleColumnClick={(taskID) => onHandleColumnClick(taskID)}
+              onHandleColumnClick={onHandleColumnClick}
               onHandleDropDownChange={(data, taskID) =>
                 onHandleDropdown(data, taskID)
               }

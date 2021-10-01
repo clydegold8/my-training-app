@@ -1,10 +1,11 @@
 import { Grid, Segment } from "semantic-ui-react";
 import styled from "styled-components";
+import { fontColor } from "../../../utils/fontColor.context";
 
 export const StyledGridFirstColumn = styled(Grid.Column)`
   &&&&& {
     i {
-      color: #2f80ed;
+      color: ${fontColor.header};
       font-size: 25px;
       margin-top: 10px;
       position: relative;
@@ -24,7 +25,7 @@ export const StyledGridRow = styled(Grid.Row)`
     bottom: 0px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #eef3f6;
+    background-color: ${fontColor.gridColor};
     margin-left: 15px;
 
     p {
@@ -41,6 +42,6 @@ export const StyledGridSegment = styled(Segment)`
     text-align: center;
     width: fit-content;
     margin: 0 auto;
-    background-color: #6fcf97;
+    background-color: ${fontColor.segmentColor};
   }
 `;

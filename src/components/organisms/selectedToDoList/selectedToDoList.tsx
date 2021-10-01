@@ -22,11 +22,12 @@ import {
 } from "../../../services/redux/store/actionCreators";
 
 const SelectToDoListComponent = () => {
+  const history = useHistory();
+
   const dispatch: Dispatch<any> = useDispatch();
-  const [showToast, setShowToast] = useState(false);
   const [toastLabel, setToastLabel] = useState("");
   const [showBox, setShowBox] = useState(false);
-  const [Allchecked, setChecked] = useState(false);
+  const [allChecked, setChecked] = useState(false);
   const [tasksSelected, setTasksSelected] = useState<ITask[]>([]);
 
   const handleClick = () => {
@@ -43,7 +44,7 @@ const SelectToDoListComponent = () => {
       setShowBox(true);
     }
 
-    if (!Allchecked) {
+    if (!allChecked) {
       if (data.checked) {
         const filteredSelectedTask: ITask[] = tasks.filter(
           (task) => task.id === data.value
@@ -65,8 +66,8 @@ const SelectToDoListComponent = () => {
   };
 
   const onToggleSelectAll = () => {
-    setChecked(!Allchecked);
-    if (Allchecked) {
+    setChecked(!allChecked);
+    if (allChecked) {
       setTasksSelected([]);
       setShowBox(false);
     } else {
@@ -76,20 +77,18 @@ const SelectToDoListComponent = () => {
 
   const onCompleteSelectedTasks = () => {
     completeSelectedTasks(tasksSelected[0], tasksSelected);
-    setShowToast(true);
     setToastLabel("To Do Completed");
     setTimeout(() => {
-      setShowToast(false);
+      setToastLabel("");
       handleClick();
     }, 2000);
   };
 
   const onDeleteSelectedTasks = () => {
     deleteSelectedTasks(tasksSelected[0], tasksSelected);
-    setShowToast(true);
     setToastLabel("To Do Deleted");
     setTimeout(() => {
-      setShowToast(false);
+      setToastLabel("");
       handleClick();
     }, 2000);
   };
@@ -106,7 +105,6 @@ const SelectToDoListComponent = () => {
     [dispatch]
   );
 
-  const history = useHistory();
   return (
     <>
       <Grid>
@@ -123,7 +121,7 @@ const SelectToDoListComponent = () => {
               taskID={task.id}
               taskName={task.taskName}
               isCrashout={task.isCrashOut}
-              isAllchecked={Allchecked}
+              isAllchecked={allChecked}
               isTask={false}
               onHandleCheckboxChange={(data) => handleCheckBoxChange(data)}
               onHandleColumnClick={(taskID) => {}}
@@ -140,7 +138,7 @@ const SelectToDoListComponent = () => {
         {showBox ? (
           <StyledGridRow>
             <Grid.Column width={16}>
-              {!Allchecked ? (
+              {!allChecked ? (
                 <p onClick={() => onToggleSelectAll()}>Select All</p>
               ) : (
                 <p onClick={() => onToggleSelectAll()}>Deselect All</p>
@@ -153,7 +151,7 @@ const SelectToDoListComponent = () => {
           ""
         )}
       </Grid>
-      <TransitionablePortal open={showToast}>
+      <TransitionablePortal open={!!toastLabel}>
         <StyledGridSegment>
           <p>{toastLabel}</p>
         </StyledGridSegment>

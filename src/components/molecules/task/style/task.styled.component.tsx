@@ -20,9 +20,9 @@ export const StyledGridCheckboxColumn = styled(Grid.Column)`
     }
     .ui.checkbox input:checked ~ label:after {
       margin-top: 1px;
-      background-color: #6fcf97;
+      background-color: ${fontColor.segmentColor};
       border-radius: 50%;
-      color: #ffffff;
+      color: ${fontColor.whiteBackground};
     }
   }
 `;

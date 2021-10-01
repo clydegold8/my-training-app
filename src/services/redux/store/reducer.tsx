@@ -66,38 +66,33 @@ const reducer = (
         tasks: updatedTasks,
       };
     case actionTypes.CRASHOUT_TASK:
-      const tasksArr: ITask[] = [];
-      state.tasks.forEach((val) => tasksArr.push(Object.assign({}, val)));
-
-      for (let task of tasksArr) {
-        if (task.id === action.task.id) {
-          task.isCrashOut = true;
-        }
-      }
+      const tasksArr: ITask[] = state.tasks.map((val: ITask) => {
+        action.task.isCrashOut = val.id === action.task.id;
+        return { ...val };
+      });
       return {
         ...state,
         tasks: tasksArr,
       };
     case actionTypes.COMPLETE_SELECTED_TASK:
-      let selectedCompletedTasks: ITask[] = [];
-      state.tasks.forEach((val) =>
-        selectedCompletedTasks.push(Object.assign({}, val))
-      );
+      let selectedCompletedTasks: ITask[] = state.tasks.map((val: ITask) => {
+        return { ...val };
+      });
 
       for (let selectedtask of action.taskArr) {
         selectedCompletedTasks = selectedCompletedTasks.filter(
           (task) => task.id !== selectedtask.id
         );
       }
+
       return {
         ...state,
         tasks: selectedCompletedTasks,
       };
     case actionTypes.DELETE_SELECTED_TASK:
-      let selectedDeletedTasks: ITask[] = [];
-      state.tasks.forEach((val) =>
-        selectedDeletedTasks.push(Object.assign({}, val))
-      );
+      let selectedDeletedTasks: ITask[] = state.tasks.map((val: ITask) => {
+        return { ...val };
+      });
 
       for (let selectedtask of action.taskArr) {
         selectedDeletedTasks = selectedDeletedTasks.filter(

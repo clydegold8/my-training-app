@@ -1,6 +1,6 @@
 import { Button, Modal } from "semantic-ui-react";
 import styled from "styled-components";
-import { fontLink } from "../../../utils/fontColor.context";
+import { fontColor, fontLink } from "../../../utils/fontColor.context";
 import { Segment } from "semantic-ui-react";
 
 export const StyledGridModal = styled(Modal)`
@@ -14,12 +14,12 @@ export const StyledGridModal = styled(Modal)`
       text-align: center;
     }
     .yesBtn {
-      background-color: #2f80ed;
-      color: #ffffff;
+      background-color: ${fontColor.header};
+      color: ${fontColor.whiteBackground};
     }
     .noBtn {
       background-color: #fce0e0;
-      color: #ed2f2f;
+      color: ${fontColor.redColor};
     }
   }
 `;
@@ -32,7 +32,7 @@ export const StyledGridSegment = styled(Segment)`
     text-align: center;
     width: fit-content;
     margin: 0 auto;
-    background-color: #6fcf97;
+    background-color: ${fontColor.segmentColor};
   }
 `;
 
@@ -41,11 +41,11 @@ export const StyledCircularBtn = styled(Button)`
     float: right;
     position: fixed;
     right: 35px;
-    background-color: #2f80ed;
+    background-color: ${fontColor.header};
     bottom: 20px;
 
     i {
-      color: #ffffff;
+      color: ${fontColor.whiteBackground};
     }
   }
 `;
