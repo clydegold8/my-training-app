@@ -5,6 +5,13 @@ export const fontColor = {
   error: "#9f3a38",
   header: "#2F80ED",
   taskName: "#333333",
+  crashOuted: "#9EB7DA",
+  segmentColor: "#6fcf97",
+  btnBackground: "#E0ECFD",
+  whiteBackground: "#FFFFFF",
+  gridColor: "#eef3f6",
+  redColor: "#ed2f2f",
+  pColor: "#86a8d6",
 };
 
 export const fontLink = {

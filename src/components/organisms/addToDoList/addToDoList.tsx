@@ -3,6 +3,7 @@ import { Grid, Icon, Input, TransitionablePortal } from "semantic-ui-react";
 import {
   StyledGridFirstColumn,
   StyledGridSegment,
+  StyledCircularBtn,
 } from "./style/addToDoList.styled.component";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -52,6 +53,11 @@ const AddToDoListComponent = () => {
           <Grid.Column width={1} />
           <Grid.Column width={14}>
             <Input fluid focus placeholder="To do" onKeyDown={handleKeyDown} />
+            <StyledCircularBtn
+              onClick={() => handleClick()}
+              circular
+              icon="times"
+            />
           </Grid.Column>
           <Grid.Column width={1} />
         </Grid.Row>

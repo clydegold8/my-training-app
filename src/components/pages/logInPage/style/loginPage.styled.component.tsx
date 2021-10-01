@@ -6,7 +6,7 @@ export const StyledGridLogoColumn = styled(Grid.Column)`
   &&&&& {
     ${fontLink.url};
     ${fontLink.fontFamily};
-    background-color: #e0ecfd;
+    background-color: ${fontColor.btnBackground};
     color: ${fontColor.default};
     text-align: center;
 
@@ -18,13 +18,13 @@ export const StyledGridLogoColumn = styled(Grid.Column)`
     h1 {
       font-size: 26px;
       font-weight: 700;
-      color: #2f80ed;
+      color: ${fontColor.header};
       margin-bottom: 7px;
     }
     p {
       margin-bottom: 30px;
       font-size: 14px;
-      color: #86a8d6;
+      color: ${fontColor.pColor};
       font-weight: 400;
     }
   }

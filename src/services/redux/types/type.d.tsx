@@ -1,6 +1,7 @@
 export type ITask = {
   id: number;
   taskName: string;
+  isCrashOut?: boolean;
 };
 
 export type TaskState = {
@@ -10,6 +11,7 @@ export type TaskState = {
 export type TaskAction = {
   type: string;
   task: ITask;
+  taskArr: ITask[];
 };
 
 export type DispatchType = (args: TaskAction) => TaskAction;

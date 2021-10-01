@@ -1,6 +1,6 @@
 import { Button } from "semantic-ui-react";
 import styled from "styled-components";
-import { fontLink } from "../../../utils/fontColor.context";
+import { fontColor, fontLink } from "../../../utils/fontColor.context";
 
 export const Styledbutton = styled(Button)<buttonInterface>`
   &&&&& {
@@ -11,8 +11,8 @@ export const Styledbutton = styled(Button)<buttonInterface>`
       props.primary
         ? ""
         : `
-    color: #2F80ED;
-    background: #E0ECFD;
+    color: ${fontColor.header};
+    background: ${fontColor.btnBackground};
     border-radius: 4px;
     box-shadow: none;
   `}

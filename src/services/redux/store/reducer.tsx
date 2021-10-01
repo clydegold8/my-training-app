@@ -6,22 +6,27 @@ const initialState: TaskState = {
     {
       id: 1,
       taskName: "Water the plants",
+      isCrashOut: false,
     },
     {
       id: 2,
       taskName: "Cook for Lunch",
+      isCrashOut: false,
     },
     {
       id: 3,
       taskName: "Cook for Dinner",
+      isCrashOut: false,
     },
     {
       id: 4,
       taskName: "Cook for Breakfast",
+      isCrashOut: false,
     },
     {
       id: 5,
       taskName: "Play many games",
+      isCrashOut: false,
     },
   ],
 };
@@ -59,6 +64,44 @@ const reducer = (
       return {
         ...state,
         tasks: updatedTasks,
+      };
+    case actionTypes.CRASHOUT_TASK:
+      const tasksArr: ITask[] = state.tasks.map((val: ITask) => {
+        action.task.isCrashOut = val.id === action.task.id;
+        return { ...val };
+      });
+      return {
+        ...state,
+        tasks: tasksArr,
+      };
+    case actionTypes.COMPLETE_SELECTED_TASK:
+      let selectedCompletedTasks: ITask[] = state.tasks.map((val: ITask) => {
+        return { ...val };
+      });
+
+      for (let selectedtask of action.taskArr) {
+        selectedCompletedTasks = selectedCompletedTasks.filter(
+          (task) => task.id !== selectedtask.id
+        );
+      }
+
+      return {
+        ...state,
+        tasks: selectedCompletedTasks,
+      };
+    case actionTypes.DELETE_SELECTED_TASK:
+      let selectedDeletedTasks: ITask[] = state.tasks.map((val: ITask) => {
+        return { ...val };
+      });
+
+      for (let selectedtask of action.taskArr) {
+        selectedDeletedTasks = selectedDeletedTasks.filter(
+          (task) => task.id !== selectedtask.id
+        );
+      }
+      return {
+        ...state,
+        tasks: selectedDeletedTasks,
       };
   }
   return state;

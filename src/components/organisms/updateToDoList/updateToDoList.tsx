@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Icon, Input, TransitionablePortal } from "semantic-ui-react";
 import {
+  StyledCircularBtn,
   StyledGridFirstColumn,
   StyledGridSegment,
 } from "./style/updateToDoList.styled.component";
@@ -81,6 +82,11 @@ const UpdateToDoListComponent = ({ id }: ItaskIDParams) => {
               focus
               placeholder="To do"
               onKeyDown={handleKeyDown}
+            />
+            <StyledCircularBtn
+              onClick={() => handleClick()}
+              circular
+              icon="times"
             />
           </Grid.Column>
           <Grid.Column width={1} />

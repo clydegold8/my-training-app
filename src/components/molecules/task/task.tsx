@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   Dropdown,
@@ -16,33 +16,58 @@ export type ITask = {
   taskName: String;
   isTask?: boolean;
   taskID: number;
-  onHandleDropDownChange: (data: DropdownItemProps, taskID: number) => any;
-  onHandleCheckboxChange: (data: CheckboxProps) => any;
+  isCrashout?: boolean;
+  isAllchecked?: boolean;
+  onHandleDropDownChange: (data: DropdownItemProps, taskID: number) => void;
+  onHandleCheckboxChange: (data: CheckboxProps) => void;
+  onHandleColumnClick: (taskID: number) => void;
 };
 
 const TaskComponent = ({
   taskName = "My Task",
   isTask = false,
   taskID = 0,
+  isCrashout,
+  isAllchecked = false,
   onHandleDropDownChange = () => {},
   onHandleCheckboxChange = () => {},
+  onHandleColumnClick = () => {},
 }: ITask) => {
+  const [isChecked, setChecked] = useState(false);
+
+  useEffect(() => {
+    setChecked(isAllchecked);
+  }, [isAllchecked]);
+
+  const toggle = () => {
+    setChecked(!isChecked);
+  };
+
   return (
     <>
       <Grid.Row>
-        {!isTask ? (
-          <StyledGridCheckboxColumn width={1}>
+        <StyledGridCheckboxColumn width={1}>
+          {!isTask ? (
             <Checkbox
+              checked={isChecked}
               value={taskID}
               name="idTask"
-              onChange={(e, data) => onHandleCheckboxChange(data)}
+              onClick={(e, data) => onHandleCheckboxChange(data)}
+              onChange={toggle}
             />
-          </StyledGridCheckboxColumn>
-        ) : (
-          ""
-        )}
-        <StyledGridTaskColumn width={13}>{taskName}</StyledGridTaskColumn>
-        {isTask ? (
+          ) : (
+            ""
+          )}
+        </StyledGridCheckboxColumn>
+
+        <StyledGridTaskColumn
+          width={12}
+          isCrashOut={isCrashout}
+          onClick={() => onHandleColumnClick(taskID)}
+        >
+          {taskName}
+        </StyledGridTaskColumn>
+        {isTask && !isCrashout ? (
           <StyledGridElipsisColumn width={2}>
             <Dropdown
               icon="ellipsis vertical"

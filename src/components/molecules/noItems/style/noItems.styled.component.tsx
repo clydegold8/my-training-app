@@ -22,8 +22,8 @@ export const StyledGridSecondColumn = styled(Grid.Column)`
     }
 
     p:nth-child(2) {
-      color: #2f80ed;
-      cursor:pointer;
+      color: ${fontColor.header};
+      cursor: pointer;
     }
   }
 `;
