@@ -22,6 +22,7 @@ import {
 } from "./style/todoList.style.component";
 import NoItemsComponent from "../../molecules/noItems";
 import { useHistory } from "react-router-dom";
+import TasksService from "../../../services/tasks.services";
 
 const ToDoListComponent = () => {
   const history = useHistory();
@@ -55,7 +56,12 @@ const ToDoListComponent = () => {
 
   const onHandleDialog = (event: any) => {
     if (event) {
-      deleteTask(isOpenState.tasks);
+      TasksService.removeTask(isOpenState.tasks.id)
+        .then((response: any) => {
+          deleteTask(response.data.tasks[0]);
+        })
+        .catch((e) => {});
+
       setShowToast(true);
       setOpenState({
         openDialog: false,
@@ -86,7 +92,12 @@ const ToDoListComponent = () => {
 
   const onHandleColumnClick = (taskID: number) => {
     const selectedTask: ITask[] = tasks.filter((task) => task.id === taskID);
-    crashOutSelectedTask(selectedTask[0]);
+    selectedTask[0].isCrashOut = !selectedTask[0].isCrashOut;
+    TasksService.updateTask(taskID, selectedTask[0])
+      .then((response: any) => {
+        crashOutSelectedTask(response.data.tasks[0]);
+      })
+      .catch((e) => {});
   };
 
   const handleAddBtn = () => {

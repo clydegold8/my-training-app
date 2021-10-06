@@ -9,6 +9,17 @@ export const simulateHttpRequest = (action: TaskAction) => {
   };
 };
 
+
+export const initializeTask = (taskArr: ITask[]) => {
+  const action: TaskAction = {
+    type: actionTypes.SET_INITIAL_STATE,
+    task: {id:0,taskName:''},
+    taskArr: taskArr,
+  };
+  return simulateHttpRequest(action);
+};
+
+
 export const addTask = (task: ITask) => {
   const action: TaskAction = {
     type: actionTypes.ADD_TASK,

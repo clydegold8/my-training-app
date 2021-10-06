@@ -1,46 +1,20 @@
 import * as actionTypes from "./actionTypes";
 import { ITask, TaskAction, TaskState } from "../types/type.d";
 
-const initialState: TaskState = {
-  tasks: [
-    {
-      id: 1,
-      taskName: "Water the plants",
-      isCrashOut: false,
-    },
-    {
-      id: 2,
-      taskName: "Cook for Lunch",
-      isCrashOut: false,
-    },
-    {
-      id: 3,
-      taskName: "Cook for Dinner",
-      isCrashOut: false,
-    },
-    {
-      id: 4,
-      taskName: "Cook for Breakfast",
-      isCrashOut: false,
-    },
-    {
-      id: 5,
-      taskName: "Play many games",
-      isCrashOut: false,
-    },
-  ],
-};
+let initialState: TaskState = { tasks: [] };
 
 const reducer = (
   state: TaskState = initialState,
   action: TaskAction
 ): TaskState => {
   switch (action.type) {
-    case actionTypes.ADD_TASK:
-      const newTask: ITask = {
-        id: Math.random(), // not really unique
-        taskName: action.task.taskName,
+    case actionTypes.SET_INITIAL_STATE:
+      return {
+        ...state,
+        tasks: action.taskArr,
       };
+    case actionTypes.ADD_TASK:
+      const newTask: ITask = action.task;
       return {
         ...state,
         tasks: state.tasks.concat(newTask),

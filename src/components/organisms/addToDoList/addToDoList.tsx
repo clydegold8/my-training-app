@@ -10,22 +10,32 @@ import { useDispatch } from "react-redux";
 import { ITask } from "../../../services/redux/types/type.d";
 import { Dispatch } from "redux";
 import { addTask } from "../../../services/redux/store/actionCreators";
+import TasksService from "../../../services/tasks.services";
 
 const AddToDoListComponent = () => {
   const [showToast, setShowToast] = useState(false);
 
   const dispatch: Dispatch<any> = useDispatch();
 
-  const addToDoTask = React.useCallback(
+  const dispatchResponse = React.useCallback(
     (task: ITask) => dispatch(addTask(task)),
     [dispatch]
   );
+
+  const addToDoTask = (newTask: ITask) => {
+    TasksService.addTask(newTask)
+      .then((response: any) => {
+        dispatchResponse(response.data.tasks[0]);
+      })
+      .catch((e) => {});
+  };
 
   const handleKeyDown = (e: any) => {
     if (e.key === "Enter") {
       let newTask: ITask = {
         id: 0,
         taskName: (e.target as HTMLInputElement).value,
+        isCrashOut: false,
       };
       addToDoTask(newTask);
       setShowToast(true);

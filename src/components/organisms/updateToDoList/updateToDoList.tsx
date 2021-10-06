@@ -10,6 +10,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { ITask, TaskState } from "../../../services/redux/types/type.d";
 import { Dispatch } from "redux";
 import { updateTask } from "../../../services/redux/store/actionCreators";
+import TasksService from "../../../services/tasks.services";
 
 type ItaskIDParams = {
   id: number;
@@ -50,7 +51,13 @@ const UpdateToDoListComponent = ({ id }: ItaskIDParams) => {
         id: selectedTask.id,
         taskName: (e.target as HTMLInputElement).value,
       };
-      updateSelectedTask(taskSelected);
+
+      TasksService.updateTask(taskSelected.id, taskSelected)
+        .then((response: any) => {
+          updateSelectedTask(response.data.tasks[0]);
+        })
+        .catch((e) => {});
+
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
