@@ -77,7 +77,7 @@ const SelectToDoListComponent = () => {
   };
 
   const dispatchOnSelectedTasks = (onComplete: boolean) => {
-    TasksService.completeAll(tasksSelected)
+    TasksService.completeOrDeleteAll(tasksSelected)
       .then((response: any) => {
         if (onComplete) {
           completeSelectedTasks(tasksSelected[0], response.data.tasks);

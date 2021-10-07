@@ -26,11 +26,7 @@ const removeTask = (id: number) => {
   return http.delete(`/task/${id}`);
 };
 
-const completeAll = (data: ITask[]) => {
-  return http.put(`/tasks`, data);
-};
-
-const deleteAll = (data: ITask[]) => {
+const completeOrDeleteAll = (data: ITask[]) => {
   return http.put(`/tasks`, data);
 };
 
@@ -40,8 +36,7 @@ const TasksService = {
   addTask,
   updateTask,
   removeTask,
-  completeAll,
-  deleteAll,
+  completeOrDeleteAll,
 };
 
 export default TasksService;
