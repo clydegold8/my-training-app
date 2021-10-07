@@ -26,14 +26,13 @@ const removeTask = (id: number) => {
   return http.delete(`/task/${id}`);
 };
 
-//ToDO - will add additional Selected Tasks Complete and Delete
-// const removeAll = () => {
-//   return http.delete(`/tutorials`);
-// };
+const completeAll = (data: ITask[]) => {
+  return http.put(`/tasks`, data);
+};
 
-// const findByTitle = (title: string) => {
-//   return http.get(`/tutorials?title=${title}`);
-// };
+const deleteAll = (data: ITask[]) => {
+  return http.put(`/tasks`, data);
+};
 
 const TasksService = {
   getAllTasks,
@@ -41,6 +40,8 @@ const TasksService = {
   addTask,
   updateTask,
   removeTask,
+  completeAll,
+  deleteAll,
 };
 
 export default TasksService;

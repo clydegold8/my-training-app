@@ -20,6 +20,7 @@ import {
   completeSelectedTask,
   deleteSelectedTask,
 } from "../../../services/redux/store/actionCreators";
+import TasksService from "../../../services/tasks.services";
 
 const SelectToDoListComponent = () => {
   const history = useHistory();
@@ -75,8 +76,21 @@ const SelectToDoListComponent = () => {
     }
   };
 
+  const dispatchOnSelectedTasks = (onComplete: boolean) => {
+    TasksService.completeAll(tasksSelected)
+      .then((response: any) => {
+        if (onComplete) {
+          completeSelectedTasks(tasksSelected[0], response.data.tasks);
+        } else {
+          deleteSelectedTasks(tasksSelected[0], response.data.tasks);
+        }
+      })
+      .catch((e) => {});
+  };
+
   const onCompleteSelectedTasks = () => {
-    completeSelectedTasks(tasksSelected[0], tasksSelected);
+    dispatchOnSelectedTasks(true);
+    setShowBox(false);
     setToastLabel("To Do Completed");
     setTimeout(() => {
       setToastLabel("");
@@ -85,7 +99,8 @@ const SelectToDoListComponent = () => {
   };
 
   const onDeleteSelectedTasks = () => {
-    deleteSelectedTasks(tasksSelected[0], tasksSelected);
+    dispatchOnSelectedTasks(false);
+    setShowBox(false);
     setToastLabel("To Do Deleted");
     setTimeout(() => {
       setToastLabel("");
