@@ -1,6 +1,6 @@
-import { Grid } from "semantic-ui-react";
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
+import { Grid } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
 
 export const StyledGridHeaderColumn = styled(Grid.Column)`
   &&&&& {
@@ -16,7 +16,7 @@ export const StyledGridHeaderColumn = styled(Grid.Column)`
       cursor: pointer;
     }
   }
-`;
+`
 
 export const StyledGridSearchColumn = styled(Grid.Column)`
   &&&&& {
@@ -32,4 +32,4 @@ export const StyledGridSearchColumn = styled(Grid.Column)`
       margin-left: 16px;
     }
   }
-`;
+`

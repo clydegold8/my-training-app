@@ -1,1 +1,1 @@
-export { default } from './selectedToDoList';
+export { default } from './selectedToDoList'

@@ -1,11 +1,12 @@
-import React from "react";
-import { Grid, Image } from "semantic-ui-react";
-import TasksIcon from "../../pages/assets/images/TasksIcon.png";
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import { Grid, Image } from 'semantic-ui-react'
+import TasksIcon from '../../pages/assets/images/TasksIcon.png'
 import {
   StyledGridImageColumn,
-  StyledGridSecondColumn,
-} from "./style/noItems.styled.component";
-import { useHistory } from "react-router-dom";
+  StyledGridSecondColumn
+} from './style/noItems.styled.component'
+import { useHistory } from 'react-router-dom'
 
 export type InoItemsComponent = {
   description?: string;
@@ -13,14 +14,14 @@ export type InoItemsComponent = {
 };
 
 const NoItemsComponent = ({
-  description = "To do list increases productivity",
-  subdescription = "Add your first to do",
+  description = 'To do list increases productivity',
+  subdescription = 'Add your first to do'
 }: InoItemsComponent) => {
-  const history = useHistory();
+  const history = useHistory()
 
   const handleClick = () => {
-    history.push("/addtodo");
-  };
+    history.push('/addtodo')
+  }
 
   return (
     <>
@@ -36,7 +37,7 @@ const NoItemsComponent = ({
         </Grid.Row>
       </Grid>
     </>
-  );
-};
+  )
+}
 
-export default NoItemsComponent;
+export default NoItemsComponent

@@ -1,8 +1,9 @@
-import React from "react";
-import InputText from "../../atoms/inputs";
-import { Grid } from "semantic-ui-react";
-import { StyledButtonSelect } from "./style/searchHead.styled.component";
-import { useHistory } from "react-router-dom";
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import InputText from '../../atoms/inputs'
+import { Grid } from 'semantic-ui-react'
+import { StyledButtonSelect } from './style/searchHead.styled.component'
+import { useHistory } from 'react-router-dom'
 
 export type IsearchHeadForm = {
   isDisabled: boolean;
@@ -14,14 +15,14 @@ export type IsearchHeadForm = {
 const SearchHead = ({
   isDisabled = false,
   isPrimary = false,
-  placeholder = "Search",
-  isLoading = false,
+  placeholder = 'Search',
+  isLoading = false
 }: IsearchHeadForm) => {
-  const history = useHistory();
+  const history = useHistory()
 
   const onClicked = () => {
-    history.push("/selecttodo");
-  };
+    history.push('/selecttodo')
+  }
 
   return (
     <>
@@ -49,7 +50,7 @@ const SearchHead = ({
         </Grid.Row>
       </Grid>
     </>
-  );
-};
+  )
+}
 
-export default SearchHead;
+export default SearchHead

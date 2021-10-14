@@ -1,12 +1,12 @@
-import { Grid } from "semantic-ui-react";
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
+import { Grid } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
 
 export const StyledGridImageColumn = styled(Grid.Column)`
   &&&&& {
     margin-top: 108px;
   }
-`;
+`
 
 export const StyledGridSecondColumn = styled(Grid.Column)`
   &&&&& {
@@ -26,4 +26,4 @@ export const StyledGridSecondColumn = styled(Grid.Column)`
       cursor: pointer;
     }
   }
-`;
+`

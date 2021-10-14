@@ -1,5 +1,6 @@
-import { SemanticCOLORS } from "semantic-ui-react";
-import { Styledbutton } from "./style/button.styled.component";
+/* eslint-disable react/react-in-jsx-scope */
+import { SemanticCOLORS } from 'semantic-ui-react'
+import { Styledbutton } from './style/button.styled.component'
 
 export type buttonProps = {
   btnlabel?: string;
@@ -32,7 +33,7 @@ const ButtonComponent = ({
     >
       {btnlabel}
     </Styledbutton>
-  );
-};
+  )
+}
 
-export default ButtonComponent;
+export default ButtonComponent

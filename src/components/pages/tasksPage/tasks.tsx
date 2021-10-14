@@ -1,20 +1,21 @@
-import React from "react";
-import LogOut from "../assets/images/LogOut.png";
-import { Grid, Image } from "semantic-ui-react";
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import LogOut from '../assets/images/LogOut.png'
+import { Grid, Image } from 'semantic-ui-react'
 import {
   StyledGridHeaderColumn,
-  StyledGridSearchColumn,
-} from "./styles/tasks.styled.component";
-import SearchHead from "../../templates/searchForm/";
-import ToDoListComponent from "../../organisms/TodoList";
-import { useHistory } from "react-router-dom";
+  StyledGridSearchColumn
+} from './styles/tasks.styled.component'
+import SearchHead from '../../templates/searchForm/'
+import ToDoListComponent from '../../organisms/TodoList'
+import { useHistory } from 'react-router-dom'
 
 const TasksPage = () => {
-  const history = useHistory();
+  const history = useHistory()
 
   const onHandleClick = () => {
-    history.push("/");
-  };
+    history.push('/')
+  }
   return (
     <>
       <Grid>
@@ -43,7 +44,7 @@ const TasksPage = () => {
         </Grid.Row>
       </Grid>
     </>
-  );
-};
+  )
+}
 
-export default TasksPage;
+export default TasksPage

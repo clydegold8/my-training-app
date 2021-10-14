@@ -1,7 +1,6 @@
-import { Button, Modal } from "semantic-ui-react";
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
-import { Segment } from "semantic-ui-react";
+import { Button, Modal, Segment } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
 
 export const StyledGridModal = styled(Modal)`
   &&&&& {
@@ -22,7 +21,7 @@ export const StyledGridModal = styled(Modal)`
       color: ${fontColor.redColor};
     }
   }
-`;
+`
 
 export const StyledGridSegment = styled(Segment)`
   &&&&& {
@@ -34,7 +33,7 @@ export const StyledGridSegment = styled(Segment)`
     margin: 0 auto;
     background-color: ${fontColor.segmentColor};
   }
-`;
+`
 
 export const StyledCircularBtn = styled(Button)`
   &&&&& {
@@ -48,4 +47,4 @@ export const StyledCircularBtn = styled(Button)`
       color: ${fontColor.whiteBackground};
     }
   }
-`;
+`

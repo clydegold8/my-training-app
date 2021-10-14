@@ -1,6 +1,6 @@
-import { Grid } from "semantic-ui-react";
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
+import { Grid } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
 
 export const StyledGridLogoColumn = styled(Grid.Column)`
   &&&&& {
@@ -28,7 +28,7 @@ export const StyledGridLogoColumn = styled(Grid.Column)`
       font-weight: 400;
     }
   }
-`;
+`
 
 export const StyledGridFormColumn = styled(Grid.Column)`
   &&&&& {
@@ -48,4 +48,4 @@ export const StyledGridFormColumn = styled(Grid.Column)`
       margin-bottom: 29px;
     }
   }
-`;
+`

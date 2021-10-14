@@ -1,6 +1,10 @@
-import { Grid } from "semantic-ui-react";
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
+import { Grid } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
+
+export type ITaskColumn = {
+  isCrashOut?: boolean;
+};
 
 export const StyledGridElipsisColumn = styled(Grid.Column)`
   &&&&& {
@@ -8,7 +12,7 @@ export const StyledGridElipsisColumn = styled(Grid.Column)`
       font-size: 20px;
     }
   }
-`;
+`
 
 export const StyledGridCheckboxColumn = styled(Grid.Column)`
   &&&&& {
@@ -25,7 +29,7 @@ export const StyledGridCheckboxColumn = styled(Grid.Column)`
       color: ${fontColor.whiteBackground};
     }
   }
-`;
+`
 
 export const StyledGridTaskColumn = styled(Grid.Column)<ITaskColumn>`
   &&&&& {
@@ -35,10 +39,6 @@ export const StyledGridTaskColumn = styled(Grid.Column)<ITaskColumn>`
     color: ${fontColor.taskName};
     cursor: pointer;
     ${(props) =>
-      props.isCrashOut ? `color: #9EB7DA; text-decoration: line-through;` : ""}
+      props.isCrashOut ? 'color: #9EB7DA; text-decoration: line-through;' : ''}
   }
-`;
-
-export type ITaskColumn = {
-  isCrashOut?: boolean;
-};
+`

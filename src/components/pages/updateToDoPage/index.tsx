@@ -1,1 +1,1 @@
-export { default } from "./updateToDoPage";
+export { default } from './updateToDoPage'

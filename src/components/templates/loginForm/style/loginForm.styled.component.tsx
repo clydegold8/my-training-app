@@ -1,6 +1,10 @@
-import { Form } from "semantic-ui-react";
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
+import { Form } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
+
+type formfieldInterface = {
+  isErrorProp?: boolean;
+};
 
 export const StyledFormField = styled(Form.Field)<formfieldInterface>`
   &&&&& {
@@ -15,8 +19,4 @@ export const StyledFormField = styled(Form.Field)<formfieldInterface>`
           : ` color: ${fontColor.default};`}
     }
   }
-`;
-
-type formfieldInterface = {
-  isErrorProp?: boolean;
-};
+`

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import ButtonComponent from "../../atoms/button";
-import { Form, SubmitButton, Input } from "formik-semantic-ui-react";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import {useHistory} from "react-router-dom";
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-use-before-define
+import React, { useState, useEffect } from 'react'
+import ButtonComponent from '../../atoms/button'
+import { Form, SubmitButton, Input } from 'formik-semantic-ui-react'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { useHistory } from 'react-router-dom'
 
 export type IloginForm = {
   isDisabled: boolean;
@@ -13,26 +15,26 @@ export type IloginForm = {
 
 const LogInForm = ({ isDisabled = false, isPrimary = true }) => {
   useEffect(() => {
-    setDisabledState(isDisabled);
-  }, [isDisabled]);
+    setDisabledState(isDisabled)
+  }, [isDisabled])
 
-  const [isDisabledState, setDisabledState] = useState(isDisabled);
+  const [isDisabledState, setDisabledState] = useState(isDisabled)
 
   const initialValues = {
-    email: "",
-    password: "",
-  };
+    email: '',
+    password: ''
+  }
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
+      .email('Invalid email address')
+      .required('Email is required'),
     password: Yup.string()
-      .min(8, "Must be at least 8 characters")
-      .required("Password is required"),
-  });
+      .min(8, 'Must be at least 8 characters')
+      .required('Password is required')
+  })
 
-  const history = useHistory();
+  const history = useHistory()
 
   return (
     <>
@@ -40,13 +42,13 @@ const LogInForm = ({ isDisabled = false, isPrimary = true }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(_, { setSubmitting, resetForm }) => {
-          setDisabledState(true);
+          setDisabledState(true)
           setTimeout(() => {
-            setSubmitting(false);
-            setDisabledState(false);
-            resetForm();
-            history.push("/tasks");
-          }, 1000);
+            setSubmitting(false)
+            setDisabledState(false)
+            resetForm()
+            history.push('/tasks')
+          }, 1000)
         }}
       >
         {({ isValid }) => (
@@ -82,7 +84,7 @@ const LogInForm = ({ isDisabled = false, isPrimary = true }) => {
         )}
       </Formik>
     </>
-  );
-};
+  )
+}
 
-export default LogInForm;
+export default LogInForm

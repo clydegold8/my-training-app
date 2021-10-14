@@ -1,2 +1,2 @@
-export { default } from './task';
-export type {ITask} from './task'
+export { default } from './task'
+export type { ITask } from './task'
