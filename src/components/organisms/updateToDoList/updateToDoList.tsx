@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { Grid, Icon, Input, TransitionablePortal } from "semantic-ui-react";
+// eslint-disable-next-line no-use-before-define
+import React, { useState, useEffect } from 'react'
+import { Grid, Icon, Input, TransitionablePortal } from 'semantic-ui-react'
 import {
   StyledCircularBtn,
   StyledGridFirstColumn,
-  StyledGridSegment,
-} from "./style/updateToDoList.styled.component";
-import { useHistory } from "react-router-dom";
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { ITask, TaskState } from "../../../services/redux/types/type.d";
-import { Dispatch } from "redux";
-import { updateTask } from "../../../services/redux/store/actionCreators";
+  StyledGridSegment
+} from './style/updateToDoList.styled.component'
+import { useHistory } from 'react-router-dom'
+import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+import { ITask, TaskState } from '../../../services/redux/types/type.d'
+import { Dispatch } from 'redux'
+import { updateTask } from '../../../services/redux/store/actionCreators'
+import TasksService from '../../../services/tasks.services'
 
 type ItaskIDParams = {
   id: number;
@@ -18,52 +20,58 @@ type ItaskIDParams = {
 const UpdateToDoListComponent = ({ id }: ItaskIDParams) => {
   const [selectedTask, setSelectedTask] = useState<ITask>({
     id: 0,
-    taskName: "",
-  });
+    taskName: ''
+  })
 
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState(false)
 
   const tasks: readonly ITask[] = useSelector(
     (state: TaskState) => state.tasks,
     shallowEqual
-  );
+  )
 
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch()
 
   const updateSelectedTask = React.useCallback(
     (task: ITask) => dispatch(updateTask(task)),
     [dispatch]
-  );
+  )
 
   useEffect(() => {
-    handleSelectedTask(id);
-  }, [id]);
+    handleSelectedTask(id)
+  }, [id])
 
   const handleSelectedTask = (id: number) => {
-    let task = tasks.filter((task) => task.id === id);
-    setSelectedTask(task[0]);
-  };
+    const task = tasks.filter((task) => task.id === id)
+    setSelectedTask(task[0])
+  }
 
   const handleKeyDown = (e: any) => {
-    if (e.key === "Enter") {
-      let taskSelected: ITask = {
+    if (e.key === 'Enter') {
+      const taskSelected: ITask = {
         id: selectedTask.id,
-        taskName: (e.target as HTMLInputElement).value,
-      };
-      updateSelectedTask(taskSelected);
-      setShowToast(true);
+        taskName: (e.target as HTMLInputElement).value
+      }
+
+      TasksService.updateTask(taskSelected.id, taskSelected)
+        .then((response: any) => {
+          updateSelectedTask(response.data.tasks[0])
+        })
+        .catch((e) => {})
+
+      setShowToast(true)
       setTimeout(() => {
-        setShowToast(false);
-        handleClick();
-      }, 2000);
+        setShowToast(false)
+        handleClick()
+      }, 2000)
     }
-  };
+  }
 
   const handleClick = () => {
-    history.push("/tasks");
-  };
+    history.push('/tasks')
+  }
 
-  const history = useHistory();
+  const history = useHistory()
   return (
     <>
       <Grid>
@@ -99,7 +107,7 @@ const UpdateToDoListComponent = ({ id }: ItaskIDParams) => {
         </StyledGridSegment>
       </TransitionablePortal>
     </>
-  );
-};
+  )
+}
 
-export default UpdateToDoListComponent;
+export default UpdateToDoListComponent

@@ -1,5 +1,6 @@
-import React from "react";
-import { StyledInput, Styledlabel } from "./style/input.styled.component";
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import { StyledInput, Styledlabel } from './style/input.styled.component'
 
 export type textInput = {
   type: string;
@@ -14,7 +15,7 @@ export type textInput = {
 };
 
 const InputText = ({
-  type = "text",
+  type = 'text',
   placeholder,
   pattern,
   isDisabled = false,
@@ -43,7 +44,7 @@ const InputText = ({
         {...props}
       />
     </>
-  );
-};
+  )
+}
 
-export default InputText;
+export default InputText

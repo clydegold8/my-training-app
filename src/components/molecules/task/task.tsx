@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect, useState } from 'react'
 import {
   Grid,
   Dropdown,
   Checkbox,
   CheckboxProps,
-  DropdownItemProps,
-} from "semantic-ui-react";
+  DropdownItemProps
+} from 'semantic-ui-react'
 import {
   StyledGridElipsisColumn,
   StyledGridCheckboxColumn,
-  StyledGridTaskColumn,
-} from "./style/task.styled.component";
+  StyledGridTaskColumn
+} from './style/task.styled.component'
 
 export type ITask = {
   taskName: String;
@@ -24,40 +25,42 @@ export type ITask = {
 };
 
 const TaskComponent = ({
-  taskName = "My Task",
+  taskName = 'My Task',
   isTask = false,
   taskID = 0,
   isCrashout,
   isAllchecked = false,
   onHandleDropDownChange = () => {},
   onHandleCheckboxChange = () => {},
-  onHandleColumnClick = () => {},
+  onHandleColumnClick = () => {}
 }: ITask) => {
-  const [isChecked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(false)
 
   useEffect(() => {
-    setChecked(isAllchecked);
-  }, [isAllchecked]);
+    setChecked(isAllchecked)
+  }, [isAllchecked])
 
   const toggle = () => {
-    setChecked(!isChecked);
-  };
+    setChecked(!isChecked)
+  }
 
   return (
     <>
       <Grid.Row>
         <StyledGridCheckboxColumn width={1}>
-          {!isTask ? (
+          {!isTask
+            ? (
             <Checkbox
               checked={isChecked}
               value={taskID}
               name="idTask"
-              onClick={(e, data) => onHandleCheckboxChange(data)}
+              onClick={(_e, data) => onHandleCheckboxChange(data)}
               onChange={toggle}
             />
-          ) : (
-            ""
-          )}
+              )
+            : (
+                ''
+              )}
         </StyledGridCheckboxColumn>
 
         <StyledGridTaskColumn
@@ -67,7 +70,8 @@ const TaskComponent = ({
         >
           {taskName}
         </StyledGridTaskColumn>
-        {isTask && !isCrashout ? (
+        {isTask && !isCrashout
+          ? (
           <StyledGridElipsisColumn width={2}>
             <Dropdown
               icon="ellipsis vertical"
@@ -78,12 +82,12 @@ const TaskComponent = ({
               <Dropdown.Menu>
                 <Dropdown.Menu scrolling>
                   <Dropdown.Item
-                    onClick={(e, data) => onHandleDropDownChange(data, taskID)}
+                    onClick={(_e, data) => onHandleDropDownChange(data, taskID)}
                     value="update"
                     text="Update"
                   />
                   <Dropdown.Item
-                    onClick={(e, data) => onHandleDropDownChange(data, taskID)}
+                    onClick={(_e, data) => onHandleDropDownChange(data, taskID)}
                     value="delete"
                     text="Delete"
                   />
@@ -91,12 +95,13 @@ const TaskComponent = ({
               </Dropdown.Menu>
             </Dropdown>
           </StyledGridElipsisColumn>
-        ) : (
-          ""
-        )}
+            )
+          : (
+              ''
+            )}
       </Grid.Row>
     </>
-  );
-};
+  )
+}
 
-export default TaskComponent;
+export default TaskComponent

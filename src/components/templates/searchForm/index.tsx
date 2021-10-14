@@ -1,2 +1,2 @@
-export { default } from './searchHead';
-export type {IsearchHeadForm} from './searchHead'
+export { default } from './searchHead'
+export type { IsearchHeadForm } from './searchHead'

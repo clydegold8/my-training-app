@@ -1,11 +1,12 @@
-import React from "react";
-import LogInForm from "../../templates/loginForm";
-import { Grid, Image } from "semantic-ui-react";
-import LogoHead from "../assets/images/LogoHead.png";
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import LogInForm from '../../templates/loginForm'
+import { Grid, Image } from 'semantic-ui-react'
+import LogoHead from '../assets/images/LogoHead.png'
 import {
   StyledGridLogoColumn,
-  StyledGridFormColumn,
-} from "./style/loginPage.styled.component";
+  StyledGridFormColumn
+} from './style/loginPage.styled.component'
 
 const LogInPage = () => {
   return (
@@ -25,7 +26,7 @@ const LogInPage = () => {
         </Grid.Row>
       </Grid>
     </>
-  );
-};
+  )
+}
 
-export default LogInPage;
+export default LogInPage

@@ -1,45 +1,57 @@
-import React, { useState } from "react";
-import { Grid, Icon, Input, TransitionablePortal } from "semantic-ui-react";
+// eslint-disable-next-line no-use-before-define
+import React, { useState } from 'react'
+import { Grid, Icon, Input, TransitionablePortal } from 'semantic-ui-react'
 import {
   StyledGridFirstColumn,
   StyledGridSegment,
-  StyledCircularBtn,
-} from "./style/addToDoList.styled.component";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { ITask } from "../../../services/redux/types/type.d";
-import { Dispatch } from "redux";
-import { addTask } from "../../../services/redux/store/actionCreators";
+  StyledCircularBtn
+} from './style/addToDoList.styled.component'
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { ITask } from '../../../services/redux/types/type.d'
+import { Dispatch } from 'redux'
+import { addTask } from '../../../services/redux/store/actionCreators'
+import TasksService from '../../../services/tasks.services'
+import { AxiosResponse } from 'axios'
 
 const AddToDoListComponent = () => {
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState(false)
 
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch()
 
-  const addToDoTask = React.useCallback(
+  const dispatchResponse = React.useCallback(
     (task: ITask) => dispatch(addTask(task)),
     [dispatch]
-  );
+  )
+
+  const addToDoTask = (newTask: ITask) => {
+    TasksService.addTask(newTask)
+      .then((response: AxiosResponse<any>) => {
+        dispatchResponse(response.data.tasks[0])
+      })
+      .catch((e) => {})
+  }
 
   const handleKeyDown = (e: any) => {
-    if (e.key === "Enter") {
-      let newTask: ITask = {
+    if (e.key === 'Enter') {
+      const newTask: ITask = {
         id: 0,
         taskName: (e.target as HTMLInputElement).value,
-      };
-      addToDoTask(newTask);
-      setShowToast(true);
+        isCrashOut: false
+      }
+      addToDoTask(newTask)
+      setShowToast(true)
       setTimeout(() => {
-        setShowToast(false);
-      }, 2000);
+        setShowToast(false)
+      }, 2000)
     }
-  };
+  }
 
   const handleClick = () => {
-    history.push("/tasks");
-  };
+    history.push('/tasks')
+  }
 
-  const history = useHistory();
+  const history = useHistory()
   return (
     <>
       <Grid>
@@ -69,7 +81,7 @@ const AddToDoListComponent = () => {
         </StyledGridSegment>
       </TransitionablePortal>
     </>
-  );
-};
+  )
+}
 
-export default AddToDoListComponent;
+export default AddToDoListComponent

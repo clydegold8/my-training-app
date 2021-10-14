@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { fontColor, fontLink } from "../../../utils/fontColor.context";
-import ButtonComponent from "../../../atoms/button";
+import styled from 'styled-components'
+import { fontColor, fontLink } from '../../../utils/fontColor.context'
+import ButtonComponent from '../../../atoms/button'
 
 export const StyledButtonSelect = styled(ButtonComponent)`
   &&&&& {
@@ -11,4 +11,4 @@ export const StyledButtonSelect = styled(ButtonComponent)`
     color: ${fontColor.header} !important;
     background: ${fontColor.btnBackground} !important;
   }
-`;
+`
