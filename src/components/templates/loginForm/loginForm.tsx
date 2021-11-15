@@ -13,7 +13,7 @@ export type IloginForm = {
   isDisabledLogBtn?: boolean;
 };
 
-const LogInForm = ({ isDisabled = false, isPrimary = true }) => {
+const LogInForm = ({ isDisabled = false, isPrimary = true }:IloginForm): React.ReactElement => {
   useEffect(() => {
     setDisabledState(isDisabled)
   }, [isDisabled])

@@ -1,9 +1,10 @@
-import React from "react";
-import InputText from "../../atoms/inputs";
-import ButtonComponent from "../../atoms/button";
-import { Form } from "semantic-ui-react";
-import { action } from "@storybook/addon-actions";
-import { StyledFormField } from "./style/loginForm.styled.component";
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import InputText from '../../atoms/inputs'
+import ButtonComponent from '../../atoms/button'
+import { Form } from 'semantic-ui-react'
+import { action } from '@storybook/addon-actions'
+import { StyledFormField } from './style/loginForm.styled.component'
 
 export type loginFormInterface = {
   isDisabled: boolean;
@@ -17,11 +18,11 @@ const LogInForm = ({
   isDisabled = false,
   isPrimary = true,
   isLoading = false,
-  isError = false,
+  isError = false
 }: loginFormInterface) => {
   return (
     <>
-      <Form onSubmit={action("onSubmit")}>
+      <Form onSubmit={action('onSubmit')}>
         <Form.Group widths="equal">
           <StyledFormField
             control={InputText}
@@ -63,7 +64,7 @@ const LogInForm = ({
         </Form.Field>
       </Form>
     </>
-  );
-};
+  )
+}
 
-export default LogInForm;
+export default LogInForm
